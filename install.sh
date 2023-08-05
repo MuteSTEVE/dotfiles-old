@@ -117,20 +117,20 @@ sed -i 's|radius-top = 0.0|radius-top = 5.0|' ~/.config/polybar/material/config.
 sed -i 's|radius-bottom = 0.0|radius-bottom = 5.0|'  ~/.config/polybar/material/config.ini
 sed -i 's|border-size = 3|border-size = |' ~/.config/polybar/material/config.ini
 sed -i 's|modules-left = launcher workspaces term files browser settings|modules-left = launcher workspaces updates term files browser settings|' ~/.config/polybar/material/config.ini
-sed -i 's|modules-right = updates alsa battery network date sysmenu|modules-right = alsa battery network date sysmenu'
-sed -i 's|battery = BAT1|battery = BAT0|' ~/.config/polybar/material/config.ini
+sed -i 's|modules-right = updates alsa battery network date sysmenu|modules-right = alsa battery network date sysmenu|' ~/.config/polybar/material/config.ini
+sed -i 's|battery = BAT1|battery = BAT0|' ~/.config/polybar/material/config.ini|' ~/.config/olybar/material/modules.ini
 sed -i 's|time = " %I:%M %p"|time = " %b %d  %I:%M %p"|' ~/.config/polybar/material/modules.ini
 sed -i 's|;;host = 127.0.0.1|host = 127.0.0.1|' ~/.config/polybar/material/modules.ini
-sed -i 's|;;port = 6601|port = 6601|' ~/.config/polybar/material/modules.ini
+sed -i 's|;;port = 6600|port = 6601|' ~/.config/polybar/material/modules.ini
 sed -i 's|format-online = <label-song> <icon-prev> <toggle> <icon-next>|format-online = <label-song> <icon-prev> <toggle> <icon-next> <icon-repeat>|' ~/.config/polybar/material/modules.ini
 sed -i 's|format-online-prefix = |format-online-prefix = |' ~/.config/polybar/material/modules.ini
-sed -i 's|format-offline-prefix = |format-offline-prefix = ' ~/.config/polybar/material/modules.ini
+sed -i 's|format-offline-prefix = |format-offline-prefix = |' ~/.config/polybar/material/modules.ini
 sed -i 's|label-song-maxlen = 25|label-song-maxlen = 50|' ~/.config/polybar/material/modules.ini
-sed -i 's|interface = wlan0|interface = wlp4s0' ~/.config/polybar/material/modules.ini
+sed -i 's|interface = wlan0|interface = wlp4s0'| ~/.config/polybar/material/modules.ini
 
 
 cd ~/
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+#git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 mkdir ~/.config/nvim/
 git clone https://github.com/MuteSTEVE/Neovim-config.git
-mv ~/Neovim-config ~/.config/nvim
+cp ~/Neovim-config/* ~/.config/nvim/
