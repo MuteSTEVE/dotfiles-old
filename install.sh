@@ -27,6 +27,10 @@ sudo pacman -S --noconfirm cowsay
 sudo pacman -S --noconfirm ruby 
 sudo pacman -S --noconfirm 7-zip 
 sudo pacman -S --noconfirm udisks2 
+sudo pacman -S libreoffice
+sudo pacman -S vlc
+sudo pacman -S ncdu
+sudo pacman -S lua-language-server
 
 # sudo pacman -S --noconfirm apache mariadb php php-apache phpmyadmin 
 # sudo systemctl enable httpd
@@ -102,6 +106,8 @@ yay -S --noconfirm pywal
 
 sudo npm i npm@latest -g
 sudo npm i @material-design-icons/font@latest -g
+sudo npm i yarn -g
+sudo npm i vscode-languageserver -g
 
 
 cd ~/
@@ -132,5 +138,5 @@ sed -i 's|interface = wlan0|interface = wlp4s0'| ~/.config/polybar/material/modu
 cd ~/
 #git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 mkdir ~/.config/nvim/
-git clone https://github.com/MuteSTEVE/Neovim-config.git
+git clone https://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@github.com/MuteSTEVE/Neovim-config.git
 cp ~/Neovim-config/* ~/.config/nvim/
