@@ -1,5 +1,5 @@
-sudo pacman -Syu
 sudo pacman -Sy --noconfirm archlinux-keyring arcolinux-keyring
+sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm librewolf 
 sudo pacman -S --noconfirm firefox 
 sudo pacman -S --noconfirm alacritty 
@@ -31,6 +31,37 @@ sudo pacman -S --noconfirm libreoffice
 sudo pacman -S --noconfirm vlc
 sudo pacman -S --noconfirm ncdu
 sudo pacman -S --noconfirm lua-language-server
+sudo pacman -S --noconfirm wine
+sudo pacman -S --noconfirm android-tools-adb
+sudo pacman -S --noconfirm go
+sudo pacman -S --noconfirm fcitx-configtool fcitx-mozc
+sudo pacman -S --noconfirm adobe-source-han-sans-jp-fonts otf-ipafont
+sudo pacman -S --noconfirm mozc
+sudo pacman -S --noconfirm php-pgsql
+sudo pacman -S --noconfirm php
+
+
+yay -S --noconfirm nerd-fonts-meta 
+yay -S --noconfirm composer 
+yay -S --noconfirm ttf-icomoon-feather 
+yay -S --noconfirm alacritty-themes 
+yay -S --noconfirm ttf-font-awesome 
+yay -S --noconfirm ttf-iosevka-nerd
+yay -S --noconfirm ttf-fantasque-sans-mono 
+yay -S --noconfirm noto-fonts
+yay -S --noconfirm ttf-droid
+yay -S --noconfirm terminus-font
+yay -S --noconfirm ttf-icomoon-feather
+yay -S --noconfirm siji-ttf
+yay -S --noconfirm siji-git
+yay -S --noconfirm siji-git
+yay -S --noconfirm pywal
+yay -S --noconfirm mozc
+yay -S --noconfirm ttf-monapo
+yay -S --noconfirm ttf-vlgothic
+yay -S --noconfirm blesh-git
+yay -S --noconfirm update-grub
+
 
 # sudo pacman -S --noconfirm apache mariadb php php-apache phpmyadmin 
 # sudo systemctl enable httpd
@@ -72,36 +103,17 @@ sudo pacman -S --noconfirm lua-language-server
 
 
 sudo pacman -S --noconfirm ncmpc mpc mpd ncmpcpp 
-mkdir ~/.mpd
-cd ~/.mpd/
 cp ~/dotfiles/.ncmpcpp/ ~/
 cp ~/dotfiles/.mpd/ ~/
 # curl https://pastebin.com/raw/mGuS7TZU >> ~/.mpd/mpd.conf
-touch mpd.db mpd.pid mpd.log
-mkdir ~/.ncmpcpp
-cd ~/.ncmpcpp
+# touch mpd.db mpd.pid mpd.log
+# mkdir ~/.ncmpcpp
+# cd ~/.ncmpcpp
 # curl https://pastebin.com/raw/hiKTfz4i >> config
 sudo systemctl enable mpd
 sudo systemctl start mpd
 systemctl --user start mpd.service
 systemctl --user enable mpd.service
-
-
-yay -S --noconfirm nerd-fonts-meta 
-yay -S --noconfirm composer 
-yay -S --noconfirm ttf-icomoon-feather 
-yay -S --noconfirm alacritty-themes 
-yay -S --noconfirm ttf-font-awesome 
-yay -S --noconfirm ttf-iosevka-nerd
-yay -S --noconfirm ttf-fantasque-sans-mono 
-yay -S --noconfirm noto-fonts
-yay -S --noconfirm ttf-droid
-yay -S --noconfirm terminus-font
-yay -S --noconfirm ttf-icomoon-feather
-yay -S --noconfirm siji-ttf
-yay -S --noconfirm siji-git
-yay -S --noconfirm siji-git
-yay -S --noconfirm pywal
 
 
 sudo npm i npm@latest -g
@@ -116,11 +128,11 @@ cd ~/polybar-themes/
 chmod +x setup.sh 
 echo "1" | ./setup.sh
 
-cp ../dotfiles/config.ini ~/.config/polybar/material/
-cp ../dotfiles/modules.ini ~/.config/polybar/material/
+cp ~/dotfiles/config.ini ~/.config/polybar/material/
+cp ~/dotfiles/modules.ini ~/.config/polybar/material/
 
 
-cp -r ../dotfiles/.bashrc ../dotfiles/.gitconfig ../dotfiles/.config/ ../dotfiles/.mpd ../dotfiles/.ncmpcpp ~/
+cp -r ~/dotfiles/.bashrc ~/dotfiles/.gitconfig ~/dotfiles/.config/ ~/dotfiles/.mpd ~/dotfiles/.ncmpcpp ~/
 
 
 cd ~/
