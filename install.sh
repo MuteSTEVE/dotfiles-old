@@ -1,125 +1,133 @@
-sudo pacman -Sy --noconfirm archlinux-keyring arcolinux-keyring
+pkgs=(
+  archlinux-keyring
+  arcolinux-keyring
+  librewolf 
+  firefox 
+  alacritty 
+  dmenu
+  i3 
+  pavucontrol
+  pulsaudio 
+  unzip 
+  neovim
+  python-pynvim
+  xsel
+  xclip
+  rofi 
+  fortune-mod 
+  cowsay 
+  ruby 
+  pcmanfm
+  picom 
+  nitrogen 
+  cargo 
+  npm 
+  pcmanfm
+  polybar 
+  pulseaudio-alsa 
+  id3v2
+  gpick
+  nomacs
+  cowsay 
+  ruby 
+  7-zip 
+  udisks2 
+  libreoffice
+  vlc
+  ncdu
+  lua-language-server
+  wine
+  android-tools-adb
+  go
+  fcitx
+  fcitx-configtool
+  fcitx-mozc
+  adobe-source-han-sans-jp-fonts
+  otf-ipafont
+  php
+  php-pgsql
+  zsh
+  nomacs
+)
+
+yay=(
+  nerd-fonts-meta 
+  composer 
+  ttf-icomoon-feather 
+  alacritty-themes 
+  ttf-font-awesome 
+  ttf-iosevka-nerd
+  ttf-fantasque-sans-mono 
+  noto-fonts
+  ttf-droid
+  terminus-font
+  ttf-icomoon-feather
+  siji-ttf
+  siji-git
+  siji-git
+  pywal
+  update-grub
+  apache
+  mariadb
+  php
+  php-apache
+  phpmyadmin 
+)
+
 sudo pacman -Syu --noconfirm
-sudo pacman -S --noconfirm librewolf 
-sudo pacman -S --noconfirm firefox 
-sudo pacman -S --noconfirm alacritty 
-sudo pacman -S --noconfirm dmenu
-sudo pacman -S --noconfirm i3 
-sudo pacman -S --noconfirm pavucontrol pulsaudio 
-sudo pacman -S --noconfirm unzip 
-sudo pacman -S --noconfirm neovim python-pynvim xsel xclip
-sudo pacman -S --noconfirm rofi 
-sudo pacman -S --noconfirm fortune-mod 
-sudo pacman -S --noconfirm cowsay 
-sudo pacman -S --noconfirm ruby 
-sudo pacman -S --noconfirm pcmanfm
-sudo pacman -S --noconfirm picom 
-sudo pacman -S --noconfirm nitrogen 
-sudo pacman -S --noconfirm cargo 
-sudo pacman -S --noconfirm npm 
-sudo pacman -S --noconfirm pcmanfm
-sudo pacman -S --noconfirm polybar 
-sudo pacman -S --noconfirm pulseaudio-alsa 
-sudo pacman -S --noconfirm id3v2
-sudo pacman -S --noconfirm gpick
-sudo pacman -S --noconfirm nomacs
-sudo pacman -S --noconfirm cowsay 
-sudo pacman -S --noconfirm ruby 
-sudo pacman -S --noconfirm 7-zip 
-sudo pacman -S --noconfirm udisks2 
-sudo pacman -S --noconfirm libreoffice
-sudo pacman -S --noconfirm vlc
-sudo pacman -S --noconfirm ncdu
-sudo pacman -S --noconfirm lua-language-server
-sudo pacman -S --noconfirm wine
-sudo pacman -S --noconfirm android-tools-adb
-sudo pacman -S --noconfirm go
-sudo pacman -S --noconfirm fcitx-configtool fcitx-mozc
-sudo pacman -S --noconfirm adobe-source-han-sans-jp-fonts otf-ipafont
-sudo pacman -S --noconfirm mozc
-sudo pacman -S --noconfirm php-pgsql
-sudo pacman -S --noconfirm php
+sudo pacman -S --noconfirm "${pkgs[@]}"
+yay -S --noconfirm "${yay[@]}"
 
+sudo systemctl enable httpd
+sudo systemctl restart httpd
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo systemctl enable mysqld
+sudo systemctl start mysqld
 
-yay -S --noconfirm nerd-fonts-meta 
-yay -S --noconfirm composer 
-yay -S --noconfirm ttf-icomoon-feather 
-yay -S --noconfirm alacritty-themes 
-yay -S --noconfirm ttf-font-awesome 
-yay -S --noconfirm ttf-iosevka-nerd
-yay -S --noconfirm ttf-fantasque-sans-mono 
-yay -S --noconfirm noto-fonts
-yay -S --noconfirm ttf-droid
-yay -S --noconfirm terminus-font
-yay -S --noconfirm ttf-icomoon-feather
-yay -S --noconfirm siji-ttf
-yay -S --noconfirm siji-git
-yay -S --noconfirm siji-git
-yay -S --noconfirm pywal
-yay -S --noconfirm mozc
-yay -S --noconfirm ttf-monapo
-yay -S --noconfirm ttf-vlgothic
-yay -S --noconfirm blesh-git
-yay -S --noconfirm update-grub
-
-
-# sudo pacman -S --noconfirm apache mariadb php php-apache phpmyadmin 
-# sudo systemctl enable httpd
-# sudo systemctl restart httpd
-# sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-# sudo systemctl enable mysqld
-# sudo systemctl start mysqld
-
-# sudo sed -i 's|#LoadModule mpm_event_module modules/mod_mpm_event.so|LoadModule mpm_event_module modules/mod_mpm_event.so|' /etc/httpd/conf/httpd.conf
+sudo sed -i 's|#LoadModule mpm_event_module modules/mod_mpm_event.so|LoadModule mpm_event_module modules/mod_mpm_event.so|' /etc/httpd/conf/httpd.conf
 # sudo sed -i 's|#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so|LoadModule mpm_prefork_module modules/mod_mpm_prefork.so|' /etc/httpd/conf/httpd.conf
 
-# echo "" | sudo tee -a /etc/httpd/conf/httpd.conf
-# sudo tee -a /etc/httpd/conf/httpd.conf <<EOF
-# LoadModule php_module modules/libphp.so
-# AddHandler php-script php
-# Include conf/extra/php_module.conf
-# EOF
+echo "" | sudo tee -a /etc/httpd/conf/httpd.conf
+sudo tee -a /etc/httpd/conf/httpd.conf <<EOF
+LoadModule php_module modules/libphp.so
+AddHandler php-script php
+Include conf/extra/php_module.conf
+EOF
 
-# sudo systemctl restart httpd
-# sudo sed -i 's|;extension=mysqli|extension=mysqli|' /etc/php/php.ini
-# sudo sed -i 's|;extension=pdo_mysql|extension=pdo_mysql|' /etc/php/php.ini
-# sudo sed -i 's|;extension=bz2|extension=bz2|' /etc/php/php.ini
+sudo systemctl restart httpd
+sudo sed -i 's|;extension=mysqli|extension=mysqli|' /etc/php/php.ini
+sudo sed -i 's|;extension=pdo_mysql|extension=pdo_mysql|' /etc/php/php.ini
+sudo sed -i 's|;extension=bz2|extension=bz2|' /etc/php/php.ini
 
-# sudo tee -a /etc/httpd/conf/extra/phpmyadmin.conf <<EOF
-# Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
-# <Directory "/usr/share/webapps/phpMyAdmin">
-#     DirectoryIndex index.php
-#     AllowOverride All
-#     Options FollowSymlinks
-#     Require all granted
-# </Directory>
-# EOF
+sudo tee -a /etc/httpd/conf/extra/phpmyadmin.conf <<EOF
+Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
+<Directory "/usr/share/webapps/phpMyAdmin">
+    DirectoryIndex index.php
+    AllowOverride All
+    Options FollowSymlinks
+    Require all granted
+</Directory>
+EOF
 
-# sudo tee -a /etc/httpd/conf/httpd.conf <<EOF
+sudo tee -a /etc/httpd/conf/httpd.conf <<EOF
 
-# Include conf/extra/phpmyadmin.conf
-# EOF
-# sudo systemctl restart httpd
+Include conf/extra/phpmyadmin.conf
+EOF
+sudo systemctl restart httpd
 
 
-sudo pacman -S --noconfirm ncmpc mpc mpd ncmpcpp 
-cp ~/dotfiles/.ncmpcpp/ ~/
-cp ~/dotfiles/.mpd/ ~/
-# curl https://pastebin.com/raw/mGuS7TZU >> ~/.mpd/mpd.conf
-# touch mpd.db mpd.pid mpd.log
-# mkdir ~/.ncmpcpp
-# cd ~/.ncmpcpp
-# curl https://pastebin.com/raw/hiKTfz4i >> config
-sudo systemctl enable mpd
-sudo systemctl start mpd
-systemctl --user start mpd.service
+sudo pacman -S --noconfirm ncmpc mpc ncmpcpp 
+cp -r ~/dotfiles/.ncmpcpp/ ~/
+cp -r ~/dotfiles/.mpd/ ~/
 systemctl --user enable mpd.service
+systemctl --user start mpd.service
 
 
 sudo npm i npm@latest -g
 sudo npm i @material-design-icons/font@latest -g
 sudo npm i yarn -g
 sudo npm i vscode-languageserver -g
+sudo npm i phpactor -g
 
 
 cd ~/
@@ -132,11 +140,12 @@ cp ~/dotfiles/config.ini ~/.config/polybar/material/
 cp ~/dotfiles/modules.ini ~/.config/polybar/material/
 
 
-cp -r ~/dotfiles/.bashrc ~/dotfiles/.gitconfig ~/dotfiles/.config/ ~/dotfiles/.mpd ~/dotfiles/.ncmpcpp ~/
+cp -r ~/dotfiles/.gitconfig ~/dotfiles/.config/ ~/dotfiles/.mpd ~/dotfiles/.ncmpcpp ~/
+cp ~/dotfiles/pacman ~/.config/polybar/material/scripts/
 
 
 cd ~/
 mkdir ~/.config/nvim/
-# git clone https://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@github.com/MuteSTEVE/Neovim-config.git
-git clone https://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@github.com/MuteSTEVE/Neovim-lazy.git
-cp ~/Neovim-lazy/* ~/.config/nvim/
+git clone https://github.com/MuteSTEVE/MuteSTEVE-Lazy.git ~/.config/nvim/
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

@@ -5,7 +5,7 @@ set $mod Mod4
 bindsym $mod+Return exec alacritty 
 
 #- kill focused window -#
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 #- change focus -#
 bindsym $mod+j focus left
@@ -126,23 +126,6 @@ set $ws10 "10"
 
 font pango:JetBrainsMono 11
 
-## Autostart 
-
-## Start theming i3status here
-# Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-
-
 ############################################
 # bar settings (input comes from i3blocks) #
 ############################################
@@ -178,15 +161,12 @@ client.placeholder      #1a0928 #1a0928 #000000 #1a0928
 client.urgent           #f7f7f7 #F75F5F #f7f7f7 #F75F5F
 client.background       #1a0928
 
-# start dmenu
-# bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
-
 ## i3-gaps
 for_window [class="^.*"] border pixel 4
 gaps inner 10
 gaps outer 5
-# smart_gaps on
-# smart_borders on
+smart_gaps on
+smart_borders on
 
 ################# i3 gaps change                   
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -227,21 +207,7 @@ mode "$mode_gaps_outer" {
 	bindsym Escape mode "default"
 }
 
-## Picom 
-exec_always --no-startup-id picom -Gcb
-
-## Startup apps
-exec pamac-tray
-exec firefox
-exec pa-applet
-
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always --no-startup-id nitrogen --set-scaled ~/.config/i3/wp/0b48766c7e1b4b2f3b61b9aa0cf744d29c7b4b86.jpg
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/Magallan_ayang/illust_86465290_20210130_031403.png
-exec_always --no-startup-id nm-applet
-exec_always --no-startup-id flameshot
-
+## Personal configuration
 bindsym $mod+shift+Return exec pcmanfm
 bindsym $mod+shift+v exec pavucontrol
 bindsym $mod+shift+n exec librewolf
@@ -249,7 +215,6 @@ bindsym $mod+shift+b exec firefox
 
 ## Scripts usage
 bindsym $mod+Shift+e exec ~/.config/polybar/material/scripts/powermenu.sh
-bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 #bindsym Shift+l exec ~/.config/i3/scripts/blur-lock
 
@@ -257,6 +222,19 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 bindsym $mod+d exec ~/.config/polybar/material/scripts/launcher.sh
 bindsym $mod+t exec rofi -show window -config ~/.config/rofi/rofidmenu.rasi
 
-#polybar
+exec_always --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+exec_always --no-startup-id picom -Gcb
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id flameshot
+exec_always --no-startup-id fcitx
+
+exec_always --no-startup-id nitrogen --set-scaled ~/.config/i3/wp/0b48766c7e1b4b2f3b61b9aa0cf744d29c7b4b86.jpg
+
 exec_always --no-startup-id ~/.config/polybar/launch.sh --material
 exec_always --no-startup-id ~/.config/polybar/material/scripts/pywal.sh ~/.config/i3/wp/0b48766c7e1b4b2f3b61b9aa0cf744d29c7b4b86.jpg
+
+for_window [class="mus"] floating enable
+for_window [class="upd"] floating enable
+bindsym $mod+m exec ~/.config/i3/scripts/ncmpcpp
