@@ -1,0 +1,3 @@
+#!/bin/bash
+
+alacritty --class upd -e sudo pacman -Syu --noconfirm ; exit 

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+_HOME="/home/${USER}"
+_DIRECTORY="$_HOME/dotfiles"
+
+sudo pacman -Syu --noconfirm
+sudo pacman -S --needed --noconfirm $(comm -12 <(pacman -Slq | sort) <(sort $_DIRECTORY/pacman.txt))
+
+cp -r $_DIRECTORY/.ncmpcpp/ $_HOME/
+cp -r $_DIRECTORY/.mpd/ $_HOME/
+systemctl --user enable mpd.service
+systemctl --user restart mpd.service
+
+sudo npm i npm@latest -g
+sudo npm i @material-design-icons/font@latest -g
+sudo npm i yarn -g
+sudo npm i vscode-languageserver -g
+sudo npm i phpactor -g
+
+# cd $_HOME/
+# git clone --depth=1 https://github.com/adi1090x/polybar-themes.git
+# cd $_HOME/polybar-themes/
+# chmod +x setup.sh 
+# echo "1" | ./setup.sh
+
+# cp $_DIRECTORY/config.ini $_HOME/.config/polybar/material/
+# cp $_DIRECTORY/modules.ini $_HOME/.config/polybar/material/
+# cp $_DIRECTORY/pacman $_HOME/.config/polybar/material/scripts/
+
+cp -r $_DIRECTORY/.gitconfig $_DIRECTORY/.config/ $_DIRECTORY/.mpd $_DIRECTORY/.ncmpcpp $_HOME/
+
+cd $_HOME/
+mkdir $_HOME/.config/nvim/
+git clone https://github.com/MuteSTEVE/MuteSTEVE-Lazy.git $_HOME/.config/nvim/
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

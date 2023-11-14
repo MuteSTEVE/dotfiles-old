@@ -1,0 +1,16 @@
+nerd-fonts-meta 
+composer 
+ttf-icomoon-feather 
+alacritty-themes 
+ttf-font-awesome 
+ttf-iosevka-nerd
+ttf-fantasque-sans-mono 
+noto-fonts
+ttf-droid
+terminus-font
+ttf-icomoon-feather
+siji-ttf
+siji-git
+siji-git
+pywal
+update-grub
