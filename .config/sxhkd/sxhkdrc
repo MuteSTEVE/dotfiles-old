@@ -1,0 +1,38 @@
+####################################################
+#
+#  ███████╗██╗  ██╗██╗  ██╗██████╗ ██████╗  ██████╗
+#  ██╔════╝╚██╗██╔╝██║  ██║██╔══██╗██╔══██╗██╔════╝
+#  ███████╗ ╚███╔╝ ███████║██║  ██║██████╔╝██║     
+#  ╚════██║ ██╔██╗ ██╔══██║██║  ██║██╔══██╗██║     
+#  ███████║██╔╝ ██╗██║  ██║██████╔╝██║  ██║╚██████╗
+#  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
+#   Dr.MuteSTEVE sxkdhrc config!
+#
+####################################################
+super + p
+  mpc toggle
+
+super + Return
+  alacritty
+
+super + shift + e
+  pcmanfm
+
+super + m
+  alacritty --class mus -e ncmpcpp
+
+super + shift + b
+  firefox
+
+super + shift + n
+  librewolf
+
+super + shift + v
+  pavucontrol
+
+# Script usage
+super + d
+  ~/.config/rofi/launchers/type-2/launcher.sh
+
+super + Escape
+  ~/.config/rofi/powermenu/type-2/powermenu.sh

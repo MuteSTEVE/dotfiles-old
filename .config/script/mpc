@@ -1,0 +1,9 @@
+#!/bin/bash
+
+case $BLOCK_BUTTON in
+    1) mpc toggle | filter ;;     # left click, pause/unpause
+    3) alacritty --class mus -e ncmpcpp ;;  # right click, launch ncmpcpp
+    4) mpc prev   | filter ;;     # scroll up, previous
+    5) mpc next   | filter ;;     # scroll down, next
+    *) mpc status | filter ;;
+esac
